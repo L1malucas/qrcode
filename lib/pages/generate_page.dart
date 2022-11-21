@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:qrcode/models/generate_qr.dart';
 
@@ -12,13 +10,14 @@ class GeneratePAge extends StatefulWidget {
 
 class _GeneratePAgeState extends State<GeneratePAge> {
   String dataQr = '';
+  String save = 'Escolha o formato para salvar o Qr Code';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Gerar Qr Code',
+          'Qr Code Gerado',
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.amber.shade700,
@@ -54,20 +53,18 @@ class _GeneratePAgeState extends State<GeneratePAge> {
               ),
             ),
           ),
-          ElevatedButton(
-            onPressed: () {},
-            child: Wrap(
-              children: const <Widget>[
-                Icon(
-                  Icons.favorite,
-                  color: Colors.pink,
-                  size: 24.0,
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Text("Click me!", style: TextStyle(fontSize: 20)),
-              ],
+          const SizedBox(height: 50),
+          Container(
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(30)),
+            child: FloatingActionButton.extended(
+              label: const Text(
+                'Salvar',
+                style: TextStyle(color: Colors.black87),
+              ),
+              tooltip: save,
+              backgroundColor: Colors.amber[700],
+              onPressed: () {},
+              icon: const Icon(Icons.save, size: 40),
             ),
           ),
         ],

@@ -4,10 +4,13 @@ import 'package:qr_flutter/qr_flutter.dart';
 class QrGenerator {
   String data = '';
   generator(qrdata) {
-    return QrImage(
+    final saida = QrImage(
       data: qrdata,
       backgroundColor: Colors.white24,
-      size: 300.0,
+      size: 225.0,
+      gapless: true,
     );
+    print(saida);
+    return saida;
   }
 }
