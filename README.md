@@ -1,6 +1,6 @@
 ## Qr Code App
 
-Project using qrcode plugin. Read, generate and share qrcode.
+Project using qrcode plugin. Scan, generate and share qrcode.
 
 ## Versão Usada
 
