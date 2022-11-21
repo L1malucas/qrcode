@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'home_page.dart';
+import 'pages/home_page.dart';
 
 void main() {
   runApp(const QrMain());
@@ -11,11 +11,10 @@ class QrMain extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Qr Code',
-      theme: ThemeData(primarySwatch: Colors.cyan),
-      home: const HomePage(),
+      home:  HomePage(),
     );
   }
 }
