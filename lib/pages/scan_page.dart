@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
+import '../models/scan_qr.dart';
+
 class ScanPage extends StatefulWidget {
   const ScanPage({super.key});
 
@@ -14,6 +16,8 @@ class _ScanPageState extends State<ScanPage> {
     torchEnabled: false, facing: CameraFacing.back,
     // format: e ratio: PODEM SER INCLUIDOS
   );
+  bool _screenOpened = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,16 +49,29 @@ class _ScanPageState extends State<ScanPage> {
       ),
       // CONTROLES DA LEITURA DO QR. OBRIGATÓRIO ESTAR NO BODY
       body: MobileScanner(
-          allowDuplicates: false,
-          controller: cameraController,
-          onDetect: (barcode, args) {
-            if (barcode.rawValue == null) {
-              debugPrint('Failed to scan Barcode');
-            } else {
-              final String code = barcode.rawValue!;
-              debugPrint('Barcode found! $code');
-            }
-          }),
+        allowDuplicates: false,
+        controller: cameraController,
+        onDetect: _foundBarcode,
+      ),
     );
+  }
+
+  void _foundBarcode(Barcode barcode, MobileScannerArguments? args) {
+    /// open screen
+    if (!_screenOpened) {
+      final String code = barcode.rawValue ?? "---";
+      debugPrint('Barcode found! $code');
+      _screenOpened = true;
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>
+                FoundCodeScreen(screenClosed: _screenWasClosed, value: code),
+          ));
+    }
+  }
+
+  void _screenWasClosed() {
+    _screenOpened = false;
   }
 }
