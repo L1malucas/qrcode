@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
         builder: (BuildContext context) {
           return Container(
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
-            margin: EdgeInsets.all(20),
+            margin: const EdgeInsets.all(20),
             alignment: Alignment.center,
             child: Flex(
               direction: Axis.vertical,
